@@ -14,7 +14,7 @@ public class ProductManager {
     public Product[] searchBy(String text) {
         Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
         for (Product product : productRepository.findAll()) {
-            if (matches(product, text)) {
+            if (product.matches(text)) {
                 Product[] tmp = new Product[result.length + 1]; // "добавляем в конец" массива result продукт product
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = product;
@@ -23,12 +23,6 @@ public class ProductManager {
             }
         }
         return result;
-    }
-
-    // метод определения соответствия товара product запросу search
-    public boolean matches(Product product, String search) {
-        return product.getName().toLowerCase().contains(search.toLowerCase());
-
     }
 
 

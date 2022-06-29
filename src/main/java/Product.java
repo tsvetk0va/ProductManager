@@ -4,6 +4,8 @@ public class Product {
     protected String name;
     protected int price;
 
+    private Product[] products = new Product[0];
+
     public Product(int id, String name, int price) {
         this.id = id;
         this.name = name;
@@ -17,6 +19,13 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+
+    // метод определения соответствия товара product запросу search
+    public boolean matches(String search) {
+        return getName().toLowerCase().contains(search.toLowerCase());
+
     }
 
 }

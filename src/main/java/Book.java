@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Book extends Product {
     private String nameAuthor;
 
@@ -6,5 +8,11 @@ public class Book extends Product {
         super(id, name, price);
         this.nameAuthor = nameAuthor;
     }
+
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search.toLowerCase()) || nameAuthor.toLowerCase().contains(search.toLowerCase());
+    }
+
 
 }
